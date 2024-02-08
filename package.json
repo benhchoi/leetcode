@@ -1,0 +1,21 @@
+{
+  "name": "leetcode",
+  "version": "1.0.0",
+  "description": "Leetcode practice",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benhchoi/leetcode.git"
+  },
+  "author": "Benjamin Choi",
+  "license": "MIT",
+  "homepage": "https://github.com/benhchoi/leetcode#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
