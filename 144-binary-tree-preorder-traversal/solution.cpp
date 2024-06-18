@@ -17,19 +17,19 @@ public:
   std::vector<int> preorderTraversal(TreeNode *root)
   {
     std::vector<int> result;
-    std::deque<const TreeNode *> work_deque;
-    const TreeNode *curr = root;
-    while (curr != nullptr || !work_deque.empty())
+    std::deque<const TreeNode *> work_deque{root};
+    while (!work_deque.empty())
     {
-      while (curr != nullptr)
+      const auto *node = work_deque.back();
+      work_deque.pop_back();
+      if (node == nullptr)
       {
-        result.emplace_back(curr->val);
-        work_deque.emplace_back(curr);
-        curr = curr->left;
+        continue;
       }
 
-      curr = work_deque.back()->right;
-      work_deque.pop_back();
+      result.emplace_back(node->val);
+      work_deque.emplace_back(node->right);
+      work_deque.emplace_back(node->left);
     }
 
     return result;

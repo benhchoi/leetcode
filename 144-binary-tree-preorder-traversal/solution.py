@@ -12,15 +12,13 @@ class TreeNode:
 class Solution:
   def preorderTraversal(self, root: Optional[TreeNode]) -> list[int]:
     result: list[int] = []
-    work_deque: deque[TreeNode] = deque()
-    curr = root
-    while curr is not None or work_deque:
-      while curr:
-        result.append(curr.val)
-        work_deque.append(curr)
-        curr = curr.left
-
+    work_deque: deque[Optional[TreeNode]] = deque([root])
+    while work_deque:
       node = work_deque.pop()
-      curr = node.right
+      if node is None:
+        continue
+
+      result.append(node.val)
+      work_deque.extend([node.right, node.left])
 
     return result
