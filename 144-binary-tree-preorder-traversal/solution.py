@@ -10,17 +10,17 @@ class TreeNode:
 
 
 class Solution:
-  def inorderTraversal(self, root: Optional[TreeNode]) -> list[int]:
-    result = []
+  def preorderTraversal(self, root: Optional[TreeNode]) -> list[int]:
+    result: list[int] = []
     work_deque: deque[TreeNode] = deque()
     curr = root
     while curr is not None or work_deque:
-      while curr is not None:
+      while curr:
+        result.append(curr.val)
         work_deque.append(curr)
         curr = curr.left
 
       node = work_deque.pop()
-      result.append(node.val)
       curr = node.right
 
     return result
