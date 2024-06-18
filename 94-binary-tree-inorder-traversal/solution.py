@@ -1,0 +1,26 @@
+from typing import Optional
+from collections import deque
+
+
+class TreeNode:
+  def __init__(self, val=0, left: Optional['TreeNode'] = None, right: Optional['TreeNode'] = None):
+    self.val = val
+    self.left = left
+    self.right = right
+
+
+class Solution:
+  def inorderTraversal(self, root: Optional[TreeNode]) -> list[int]:
+    result = []
+    work_deque: deque[Optional[TreeNode]] = deque()
+    curr = root
+    while curr is not None or work_deque:
+      while curr is not None:
+        work_deque.append(curr)
+        curr = curr.left
+
+      node = work_deque.pop()
+      result.append(node.val)
+      curr = node.right
+
+    return result
