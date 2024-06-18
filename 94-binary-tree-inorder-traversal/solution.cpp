@@ -21,16 +21,17 @@ public:
     const TreeNode *curr = root;
     while (curr != nullptr || !work_deque.empty())
     {
-      while (curr != nullptr)
+      if (curr != nullptr)
       {
         work_deque.emplace_back(curr);
         curr = curr->left;
+        continue;
       }
 
-      const TreeNode *const node = work_deque.back();
+      curr = work_deque.back();
       work_deque.pop_back();
-      result.emplace_back(node->val);
-      curr = node->right;
+      result.emplace_back(curr->val);
+      curr = curr->right;
     }
 
     return result;

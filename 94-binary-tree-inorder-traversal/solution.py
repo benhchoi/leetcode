@@ -15,12 +15,13 @@ class Solution:
     work_deque: deque[TreeNode] = deque()
     curr = root
     while curr is not None or work_deque:
-      while curr is not None:
+      if curr is not None:
         work_deque.append(curr)
         curr = curr.left
+        continue
 
-      node = work_deque.pop()
-      result.append(node.val)
-      curr = node.right
+      curr = work_deque.pop()
+      result.append(curr.val)
+      curr = curr.right
 
     return result
